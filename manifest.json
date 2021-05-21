@@ -1,0 +1,18 @@
+{
+  "name": "youWannaMergeThat?",
+  "description": "Chrome extension to make sure you have squash merge",
+  "version": "0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.github.com/*/*/pull/*"],
+      "run_at": "document_start",
+      "js": ["github.js"]
+    }
+  ],
+  "options_page": "options.html"
+}
